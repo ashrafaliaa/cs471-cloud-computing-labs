@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ashraf Ali, BSCS student at National University of Technology (NUTECH), Islamabad.">
+  <title>Ashraf Ali | BSCS Student Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Ashraf<span>.Ali</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="badge">&#128075; Hello, I'm available for internships</span>
+        <h1>Hi, I'm <span class="grad-text">Ashraf Ali</span><br>
+          <span id="typed"></span><span class="grad-text">|</span></h1>
+        <p class="lead">
+          BS Computer Science student at the <strong>National University of Technology (NUTECH), Islamabad</strong>.
+          I love turning ideas into clean, fast and useful software.
+        </p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn btn-primary">View My Work &rarr;</a>
+          <a href="about.html" class="btn btn-ghost">About Me</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" title="GitHub">GH</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">in</a>
+          <a href="mailto:your.email@example.com" title="Email">@</a>
+        </div>
+      </div>
+
+      <div class="avatar-wrap reveal">
+        <!-- Replace the letters with your photo: <div class="avatar"><img src="photo.jpg" alt="Ashraf Ali"></div> -->
+        <div class="avatar">AA</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- STATS -->
+  <section style="padding-top:0">
+    <div class="container stats">
+      <div class="card stat reveal"><strong class="grad-text" data-count="4">0</strong><span>Years of BSCS</span></div>
+      <div class="card stat reveal"><strong class="grad-text" data-count="10">0</strong><span>Projects Built</span></div>
+      <div class="card stat reveal"><strong class="grad-text" data-count="5">0</strong><span>Languages Used</span></div>
+      <div class="card stat reveal"><strong class="grad-text" data-count="100">0</strong><span>% Curiosity</span></div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section>
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>What I <span class="grad-text">Do</span></h2>
+        <p>Areas I'm learning and building in as a Computer Science student.</p>
+        <div class="bar"></div>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal"><div class="icon">&#127760;</div><h3>Web Development</h3><p>Responsive, modern websites with HTML, CSS and JavaScript.</p></div>
+        <div class="card reveal"><div class="icon">&#128187;</div><h3>Programming</h3><p>Problem solving with C++, Python and Java, with a strong grip on data structures.</p></div>
+        <div class="card reveal"><div class="icon">&#129504;</div><h3>AI &amp; Data</h3><p>Exploring machine learning and data analysis to build smarter applications.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Let's build something great together</h2>
+        <p>Have an opportunity, project idea or just want to say hi? My inbox is open.</p>
+        <a href="mailto:your.email@example.com" class="btn">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> Ashraf Ali &middot; BSCS, NUTECH Islamabad</div>
+  </footer>
+
+  <script>
+    // mobile menu
+    document.getElementById('menuBtn').onclick = () => document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // typing effect
+    const words = ['CS Student', 'Web Developer', 'Problem Solver', 'Future Software Engineer'];
+    let w = 0, c = 0, del = false;
+    const el = document.getElementById('typed');
+    (function type() {
+      const word = words[w];
+      el.textContent = word.slice(0, c);
+      if (!del && c < word.length) c++;
+      else if (!del) { del = true; return setTimeout(type, 1400); }
+      else if (c > 0) c--;
+      else { del = false; w = (w + 1) % words.length; }
+      setTimeout(type, del ? 45 : 90);
+    })();
+
+    // reveal on scroll + counters
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('show');
+        const n = e.target.querySelector('[data-count]');
+        if (n && !n.dataset.done) {
+          n.dataset.done = 1;
+          const t = +n.dataset.count; let v = 0;
+          const step = setInterval(() => { v += Math.ceil(t / 40); if (v >= t) { v = t; clearInterval(step); } n.textContent = v + (t === 100 ? '' : '+'); }, 35);
+        }
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

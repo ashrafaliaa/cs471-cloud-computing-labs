@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Ashraf Ali, BSCS student at NUTECH Islamabad.">
+  <title>Projects | Ashraf Ali</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Ashraf<span>.Ali</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>My <span class="grad-text">Projects</span></h2>
+        <p>A selection of things I've built while studying. Edit these cards with your real projects and links.</p>
+        <div class="bar"></div>
+      </div>
+
+      <div class="filters reveal">
+        <button class="filter-btn active" data-f="all">All</button>
+        <button class="filter-btn" data-f="web">Web</button>
+        <button class="filter-btn" data-f="software">Software</button>
+        <button class="filter-btn" data-f="ai">AI / Data</button>
+      </div>
+
+      <div class="grid-3" id="grid">
+
+        <article class="card project reveal" data-cat="web">
+          <div class="thumb t1">&#127760;</div>
+          <div class="p-body">
+            <h3>Personal Portfolio</h3>
+            <p>This responsive, multi-page portfolio website built with HTML, CSS and vanilla JavaScript.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            <div class="p-links"><a href="#">Live Demo &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+        <article class="card project reveal" data-cat="software">
+          <div class="thumb t2">&#127979;</div>
+          <div class="p-body">
+            <h3>Student Management System</h3>
+            <p>A console application to add, search, update and delete student records using OOP principles.</p>
+            <div class="tags"><span class="tag">C++</span><span class="tag">OOP</span><span class="tag">File Handling</span></div>
+            <div class="p-links"><a href="#">Details &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+        <article class="card project reveal" data-cat="ai">
+          <div class="thumb t3">&#128202;</div>
+          <div class="p-body">
+            <h3>Data Analysis Dashboard</h3>
+            <p>Cleaned and visualised a real dataset to uncover trends and insights with charts.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+            <div class="p-links"><a href="#">Details &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+        <article class="card project reveal" data-cat="web">
+          <div class="thumb t4">&#9989;</div>
+          <div class="p-body">
+            <h3>To-Do List App</h3>
+            <p>A clean task manager with add, complete and delete features that saves tasks in the browser.</p>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">LocalStorage</span></div>
+            <div class="p-links"><a href="#">Live Demo &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+        <article class="card project reveal" data-cat="software">
+          <div class="thumb t5">&#128218;</div>
+          <div class="p-body">
+            <h3>Library Database</h3>
+            <p>A relational database design for a library with books, members and issue records.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">ERD</span><span class="tag">MySQL</span></div>
+            <div class="p-links"><a href="#">Details &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+        <article class="card project reveal" data-cat="ai">
+          <div class="thumb t6">&#129302;</div>
+          <div class="p-body">
+            <h3>Simple ML Predictor</h3>
+            <p>A beginner machine learning model that predicts outcomes from data using scikit-learn.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span></div>
+            <div class="p-links"><a href="#">Details &rarr;</a><a href="#">Source</a></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Have a project in mind?</h2>
+        <p>I'm open to internships, collaborations and freelance work.</p>
+        <a href="mailto:your.email@example.com" class="btn">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> Ashraf Ali &middot; BSCS, NUTECH Islamabad</div>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').onclick = () => document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // project filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.project').forEach(p => {
+          p.classList.toggle('hide', btn.dataset.f !== 'all' && p.dataset.cat !== btn.dataset.f);
+        });
+      };
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

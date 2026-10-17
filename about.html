@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Ashraf Ali, BSCS student at NUTECH Islamabad.">
+  <title>About | Ashraf Ali</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Ashraf<span>.Ali</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>About <span class="grad-text">Me</span></h2>
+        <p>A little about who I am and what drives me.</p>
+        <div class="bar"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="avatar-wrap" style="margin-bottom:30px">
+            <!-- Replace with your photo: <div class="avatar"><img src="photo.jpg" alt="Ashraf Ali"></div> -->
+            <div class="avatar" style="width:min(260px,70vw);font-size:4.4rem">AA</div>
+          </div>
+          <ul class="info-list">
+            <li><b>Name</b><span>Ashraf Ali</span></li>
+            <li><b>Degree</b><span>BS Computer Science (BSCS)</span></li>
+            <li><b>University</b><span>National University of Technology (NUTECH)</span></li>
+            <li><b>Location</b><span>Islamabad, Pakistan</span></li>
+            <li><b>Email</b><span>your.email@example.com</span></li>
+          </ul>
+        </div>
+
+        <div class="about-text reveal">
+          <h3 style="font-family:'Syne',sans-serif;font-size:1.6rem;margin-bottom:14px">
+            Passionate about code, <span class="grad-text">curious about everything</span>
+          </h3>
+          <p>
+            I'm Ashraf Ali, a Computer Science student at the National University of Technology (NUTECH) in Islamabad.
+            I enjoy solving problems, building things for the web and learning how software really works under the hood.
+          </p>
+          <p>
+            Beyond classes, I spend my time practising programming, building small projects and exploring new tools
+            and technologies. I'm looking for internships and collaborations where I can learn from experienced
+            engineers and contribute real value.
+          </p>
+
+          <h3 style="font-family:'Syne',sans-serif;margin:34px 0 18px">My Skills</h3>
+          <div class="skill"><div class="skill-top"><span>HTML &amp; CSS</span><span>90%</span></div><div class="track"><div class="fill" data-w="90"></div></div></div>
+          <div class="skill"><div class="skill-top"><span>JavaScript</span><span>75%</span></div><div class="track"><div class="fill" data-w="75"></div></div></div>
+          <div class="skill"><div class="skill-top"><span>C++ / Data Structures</span><span>80%</span></div><div class="track"><div class="fill" data-w="80"></div></div></div>
+          <div class="skill"><div class="skill-top"><span>Python</span><span>78%</span></div><div class="track"><div class="fill" data-w="78"></div></div></div>
+          <div class="skill"><div class="skill-top"><span>SQL / Databases</span><span>70%</span></div><div class="track"><div class="fill" data-w="70"></div></div></div>
+
+          <div class="tags">
+            <span class="tag">Git &amp; GitHub</span><span class="tag">OOP</span><span class="tag">Algorithms</span>
+            <span class="tag">Java</span><span class="tag">Problem Solving</span><span class="tag">Teamwork</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION TIMELINE -->
+  <section style="padding-top:0">
+    <div class="container" style="max-width:800px">
+      <div class="sec-head reveal">
+        <h2>My <span class="grad-text">Journey</span></h2>
+        <div class="bar"></div>
+      </div>
+      <div class="timeline">
+        <div class="t-item reveal">
+          <small>Present</small>
+          <h3>BS Computer Science</h3>
+          <p>National University of Technology (NUTECH), Islamabad. Studying programming, data structures, databases, operating systems and software engineering.</p>
+        </div>
+        <div class="t-item reveal">
+          <small>Ongoing</small>
+          <h3>Self-Learning &amp; Projects</h3>
+          <p>Building personal projects, practising problem solving and exploring modern web technologies.</p>
+        </div>
+        <div class="t-item reveal">
+          <small>Before University</small>
+          <h3>Intermediate / FSc</h3>
+          <p>Built the academic foundation in mathematics and science that led me towards computer science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Want to see what I've built?</h2>
+        <p>Check out my projects and get in touch.</p>
+        <a href="projects.html" class="btn">View Projects &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> Ashraf Ali &middot; BSCS, NUTECH Islamabad</div>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').onclick = () => document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('show');
+        e.target.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%');
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
